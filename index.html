@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPAM GUARD</title>
+    <style>
+        /* Background and basic settings */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            color: #333;
+        }
+
+        /* Container styling */
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Header styling */
+        h2 {
+            color: #4A90E2;
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        /* Label styling */
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Text area styling */
+        textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            resize: none;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Text area focus effect */
+        textarea:focus {
+            border-color: #4A90E2;
+            outline: none;
+            box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
+        }
+
+        /* Button styling */
+        input[type="submit"] {
+            background-color: #4A90E2;
+            color: white;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Button hover effect */
+        input[type="submit"]:hover {
+            background-color: #357ABD;
+            transform: translateY(-2px);
+        }
+
+        /* Result styling */
+        .result {
+            margin-top: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #4A90E2;
+            background-color: #f1f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>SPAM GUARD</h2>
+        <form action="/predict" method="post">
+            <label for="message">Enter your message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <input type="submit" value="Classify">
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
